@@ -1,0 +1,28 @@
+site_name: Vera
+repo_url: https://github.com/project-vera
+repo_name: project-vera
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: white
+      accent: black
+      font:
+        text: Roboto
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      accent: white
+      font:
+        text: Roboto
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
