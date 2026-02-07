@@ -4,9 +4,10 @@ repo_name: project-vera
 nav:
   - Mission: index.md
   - About: about.md
-  - Blogs: 
+  - Blogs:
     - "[02-06-2026] No More Manual Mocks.": blogs/cloudemu/cloudemu.md
     - "[02-06-2026] Can AI Agents Replace DevOps?": blogs/cloudagent/cloudagent.md
+  - Vera AWS: vera-aws.md
 
 theme:
   name: material
