@@ -81,4 +81,19 @@ By turning static documentation into executable logic, we hope to finally solve 
       https://dl.acm.org/doi/10.1145/3772356.3772404
     </a>
   </div>
+  <div>
+    <strong>BibTeX:</strong>
+  </div>
+<pre style="
+/* padding: 0.4rem 0.5rem; */
+font-size: 0.7rem;
+line-height: 1.2;
+border-radius: 3px;
+overflow-x: auto;">
+<code>@inproceedings{bhatnagar2025cloudemu,
+  author = {Bhatnagar, Archit and Qiu, Yiming and McClure, Sarah and Ratnasamy, Sylvia and Chen, Ang},
+  title = {A Case for Learned Cloud Emulators},
+  booktitle = {Proceedings of the 24th ACM Workshop on Hot Topics in Networks},
+  year = {2025}
+}</code></pre>
 </div>
