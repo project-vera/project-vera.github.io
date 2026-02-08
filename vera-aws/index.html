@@ -9,28 +9,26 @@
       
       
       
-        <link rel="prev" href="../../../about/">
+        <link rel="prev" href="../blogs/cloudagent/cloudagent/">
       
-      
-        <link rel="next" href="../../cloudagent/cloudagent/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>[02-06-2026] No More Manual Mocks. - Vera</title>
+        <title>AWS EC2 Emulator - Vera</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +47,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#no-more-manual-mocks-a-case-for-learned-cloud-emulators" class="md-skip">
+        <a href="#vera-aws-version-01" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Vera" class="md-header__button md-logo" aria-label="Vera" data-md-component="logo">
+    <a href=".." title="Vera" class="md-header__button md-logo" aria-label="Vera" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              [02-06-2026] No More Manual Mocks.
+              AWS EC2 Emulator
             
           </span>
         </div>
@@ -226,7 +224,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Vera" class="md-nav__button md-logo" aria-label="Vera" data-md-component="logo">
+    <a href=".." title="Vera" class="md-nav__button md-logo" aria-label="Vera" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -256,7 +254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -283,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../about/" class="md-nav__link">
         
   
   
@@ -307,20 +305,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -341,7 +337,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -356,37 +352,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    [02-06-2026] No More Manual Mocks.
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../blogs/cloudemu/cloudemu/" class="md-nav__link">
         
   
   
@@ -402,59 +371,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-learned-emulator-approach" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The "Learned Emulator" Approach
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preliminary-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Preliminary Results
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-future-a-cloud-gym" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Future: A "Cloud Gym"
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -467,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloudagent/cloudagent/" class="md-nav__link">
+      <a href="../blogs/cloudagent/cloudagent/" class="md-nav__link">
         
   
   
@@ -499,10 +415,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../vera-aws/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS EC2 Emulator
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -518,6 +461,137 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-cli-via-uv-run-awscli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS CLI via uv run awscli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-cli-directly-via-awscli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS CLI directly via awscli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -549,10 +623,88 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-learned-emulator-approach" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The "Learned Emulator" Approach
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-cli-via-uv-run-awscli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS CLI via uv run awscli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-cli-directly-via-awscli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS CLI directly via awscli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Tests
       
     </span>
   </a>
@@ -560,10 +712,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#preliminary-results" class="md-nav__link">
+  <a href="#project-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Preliminary Results
+        Project Structure
       
     </span>
   </a>
@@ -571,10 +723,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-future-a-cloud-gym" class="md-nav__link">
+  <a href="#supported-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Future: A "Cloud Gym"
+        Supported Resources
       
     </span>
   </a>
@@ -601,90 +753,201 @@
   
 
 
-<h1 id="no-more-manual-mocks-a-case-for-learned-cloud-emulators">No More Manual Mocks: A Case for Learned Cloud Emulators</h1>
-<div style="margin-top: -1.2rem; margin-bottom: 1rem; font-size: 0.85rem; color: #6b7280;">
-  February 6, 2026
-</div>
-
-<hr />
-<p>DevOps engineers face a constant dilemma: testing against the real cloud is expensive and slow, but testing locally requires emulators that often lack features or behave differently than the real thing.</p>
-<p>Existing emulators (like the popular LocalStack) rely on manual engineering. We observe that this is a Sisyphean task—AWS alone has over 240 services, and human developers struggle to keep up with the constant stream of new APIs and updates. As a result, coverage is often spotty; for example, we found that existing tools cover only ~11% of the AWS Network Firewall APIs.</p>
-<p>In our paper <strong>"A Case for Learned Cloud Emulators,"</strong> we propose a paradigm shift: instead of hand-coding mocks, why not use Large Language Models (LLMs) to <strong>learn</strong> the emulation logic directly from cloud documentation?</p>
-<h3 id="the-learned-emulator-approach">The "Learned Emulator" Approach</h3>
-<p>Simply asking an LLM to "write a cloud emulator" results in buggy, hallucinated code. To solve this, we introduce a <strong>neuro-symbolic workflow</strong> that constrains the AI using formal abstractions. We view each cloud resource not just as code, but as a formal State Machine (SM).</p>
-<p align="center">
-  <img src="../pics/cloudemu_fig1.png" width="50%">
-  <br>
-  <em>Figure 1: The grammar for specifying an emulator.</em>
-</p>
-
-<p>Our workflow consists of three key stages:</p>
-<ol>
-<li><strong>Documentation Wrangling:</strong> We automatically scrape and index massive cloud documentation (like AWS PDFs), organizing it into resource-specific contexts to overcome LLM context window limits.</li>
-<li><strong>State Machine (SM) Extraction:</strong> Instead of generating raw Python code immediately, we task the LLM with extracting a formal <strong>State Machine specification</strong> from the docs. This captures the resource's states (e.g., "available," "pending") and valid transitions (API calls like <code>CreateVpc</code>), enforcing logic and dependencies that unstructured code generation misses.</li>
-<li><strong>Automated Alignment:</strong> To ensure the emulator behaves exactly like the real cloud, we run traces against both our generated emulator and the actual cloud. We detect discrepancies (e.g., an error code mismatch) and feed them back to the LLM to patch the logic automatically.</li>
-</ol>
-<p align="center">
-  <img src="../pics/cloudemu_design.png-1.png" width="80%">
-  <br>
-  <em>Figure 2: Our envisioned workflow.</em>
-</p>
-
-<h3 id="preliminary-results">Preliminary Results</h3>
-<p>We built a prototype and the results highlight significant advantages over current manual methods:</p>
+<h1 id="vera-aws-version-01">Vera AWS (Version 0.1)</h1>
+<p>Local AWS EC2 emulator. Currently supports 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end). Runs on your machine with no AWS account needed.</p>
+<h2 id="setup">Setup</h2>
+<pre><code class="language-bash">./install.sh
+</code></pre>
+<p>This creates a venv, installs dependencies, sets up dummy AWS credentials (<code>~/.aws/credentials</code>), and generates two wrapper scripts in <code>.bin/</code>:</p>
 <ul>
-<li><strong>Better Coverage:</strong> In our preliminary tests, we achieved <strong>100% API coverage</strong> for the AWS Network Firewall service, compared to just 11% for the state-of-the-art manual emulator.</li>
-<li><strong>Accuracy:</strong> By modeling resources as State Machines, we prevent common logic errors. As shown below, our SM-based approach maintains high accuracy during state updates, whereas a direct-to-code (D2C) LLM approach often fails completely (0% accuracy) because it loses track of resource dependencies.</li>
+<li><strong><code>awscli</code></strong> — drop-in for <code>aws</code>, routes requests to the emulator</li>
+<li><strong><code>terlocal</code></strong> — drop-in for <code>terraform</code>, configures the AWS provider endpoint</li>
 </ul>
-<p align="center">
-  <img src="../pics/em_accuracy.png-1.png" width="60%">
-  <br>
-  <em>Figure 3: Accuracy of learned emulators across scenarios.</em>
-</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Python 3.10+</li>
+<li>AWS CLI and Terraform are installed automatically by <code>install.sh</code> if missing (macOS/Linux)</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>Start the emulator on one terminal:</p>
+<pre><code class="language-bash">uv run main.py
+# Running at http://localhost:5003
+</code></pre>
+<h3 id="aws-cli-via-uv-run-awscli">AWS CLI via <code>uv run awscli</code></h3>
+<pre><code class="language-bash">uv run awscli ec2 create-vpc --cidr-block 10.0.0.0/16
+# {
+#     &quot;Vpc&quot;: {
+#         &quot;VpcId&quot;: &quot;vpc-28bc3a23&quot;,
+#         &quot;CidrBlock&quot;: &quot;10.0.0.0/16&quot;,
+#         &quot;State&quot;: &quot;available&quot;,
+#         ...
+#     }
+# }
+</code></pre>
+<h3 id="aws-cli-directly-via-awscli">AWS CLI directly via <code>awscli</code></h3>
+<p>Simply activate the venv and run <code>awscli</code>:</p>
+<pre><code class="language-bash">source .venv/bin/activate
 
-<p>We also used our extracted state machines to quantify the complexity of different cloud services, counting the number of state transitions inherent to services like EC2 versus DynamoDB.</p>
-<p align="center">
-  <img src="../pics/state_machine_cdf.png-1.png" width="60%">
-  <br>
-  <em>Figure 4: CDF of SM complexity across services.</em>
-</p>
+awscli ec2 describe-vpcs
+awscli ec2 run-instances --image-id ami-12345678 --instance-type t2.micro
+awscli ec2 describe-instances
+</code></pre>
+<h3 id="terraform">Terraform</h3>
+<p>Write standard Terraform — no provider overrides needed:</p>
+<pre><code class="language-hcl">provider &quot;aws&quot; {
+  region = &quot;us-east-1&quot;
+}
 
-<h3 id="the-future-a-cloud-gym">The Future: A "Cloud Gym"</h3>
-<p>Beyond just testing, we believe this technology opens new doors. A high-fidelity, zero-cost emulator could serve as a <strong>"Cloud Gym"</strong>—a training ground for AI agents to learn how to manage cloud infrastructure without the risk of racking up a massive bill.</p>
-<p>By turning static documentation into executable logic, we hope to finally solve the bottleneck of cloud development velocity.</p>
-<p><em>For more details, check out our full paper in the HotNets '25 proceedings.</em></p>
-<hr />
-<div style="margin: 0.6rem 0; font-size: 0.8rem; line-height: 1.3;">
-  <div>
-    <strong>Authors:</strong>
-    Archit Bhatnagar, Yiming Qiu, Sarah McClure, Sylvia Ratnasamy, Ang Chen
-  </div>
-  <div>
-    <strong>Affiliations:</strong>
-    University of Michigan, The University of Hong Kong, UC Berkeley
-  </div>
-  <div>
-    <strong>Paper link:</strong>
-    <a href="https://dl.acm.org/doi/10.1145/3772356.3772404" target="_blank" rel="noopener noreferrer">
-      https://dl.acm.org/doi/10.1145/3772356.3772404
-    </a>
-  </div>
-  <div>
-    <strong>BibTeX:</strong>
-  </div>
-<pre style="
-/* padding: 0.4rem 0.5rem; */
-font-size: 0.7rem;
-line-height: 1.2;
-border-radius: 3px;
-overflow-x: auto;">
-<code>@inproceedings{bhatnagar2025cloudemu,
-  author = {Bhatnagar, Archit and Qiu, Yiming and McClure, Sarah and Ratnasamy, Sylvia and Chen, Ang},
-  title = {A Case for Learned Cloud Emulators},
-  booktitle = {Proceedings of the 24th ACM Workshop on Hot Topics in Networks},
-  year = {2025}
-}</code></pre>
-</div>
+resource &quot;aws_vpc&quot; &quot;main&quot; {
+  cidr_block = &quot;10.0.0.0/16&quot;
+}
+</code></pre>
+<p>Then use <code>uv run terlocal</code> instead of <code>terraform</code>. Or simply activate the venv and directly run <code>terlocal</code>:</p>
+<pre><code class="language-bash">source .venv/bin/activate
+
+terlocal init
+terlocal apply -auto-approve
+terlocal destroy -auto-approve
+</code></pre>
+<p>See <code>tests/tf/</code> for more examples.</p>
+<h2 id="running-tests">Running Tests</h2>
+<pre><code class="language-bash"># Terminal 1 — start the emulator
+uv run main.py
+
+# Terminal 2 — run 260 CLI commands against it
+cd tests
+uv run eval_emulator.py test.sh --endpoint http://localhost:5003 \
+  --checkpoint eval_results.json --start-from 0
+uv run analyze_results.py eval_results.json
+
+# Terraform smoke test
+cd tests/tf/00-simple-vpc
+uv run terlocal init &amp;&amp; uv run terlocal apply -auto-approve
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Emulator</th>
+<th>Passing (260 commands)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LocalStack</td>
+<td>122 (47%)</td>
+</tr>
+<tr>
+<td><strong>Vera AWS</strong></td>
+<td><strong>187 (72%)</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="project-structure">Project Structure</h2>
+<pre><code>main.py                        Flask server (port 5003)
+install.sh                     Sets up awscli/terlocal wrappers
+emulator_core/
+├── state.py                   In-memory resource store
+├── backend.py                 Base backend class
+├── gateway/base.py            Action → backend dispatch
+└── services/                  89 resource modules
+tests/
+├── test.sh                    260 CLI commands (awscli wrapper)
+├── eval_emulator.py           Evaluator with checkpointing
+└── tf/                        Terraform test cases
+</code></pre>
+<h2 id="supported-resources">Supported Resources</h2>
+<p>Vera AWS supports the following resources (via EC2 API):</p>
+<ul>
+<li>Account Attributes</li>
+<li>AFIs</li>
+<li>AMIs</li>
+<li>Authorization Rules</li>
+<li>AWS Marketplace</li>
+<li>Block Public Access</li>
+<li>Bundle Tasks</li>
+<li>BYOASN</li>
+<li>BYOIP</li>
+<li>Capacity Reservations</li>
+<li>Carrier Gateways</li>
+<li>Certificate Revocation Lists</li>
+<li>Client Connections</li>
+<li>Client VPN Endpoints</li>
+<li>Configuration Files</li>
+<li>Customer Gateways</li>
+<li>Customer Owned IP Addresses</li>
+<li>Declarative Policies (Account Status Report)</li>
+<li>Dedicated Hosts</li>
+<li>DHCP Options</li>
+<li>EC2 Fleet</li>
+<li>EC2 Instance Connect Endpoints</li>
+<li>EC2 Topology</li>
+<li>Elastic Graphics</li>
+<li>Elastic IP Addresses</li>
+<li>Elastic Network Interfaces</li>
+<li>Encryption</li>
+<li>Event Notifications</li>
+<li>Event Windows For Scheduled Events</li>
+<li>Fast Snapshot Restores</li>
+<li>Infrastructure Performance</li>
+<li>Instance Types</li>
+<li>Instances</li>
+<li>Internet Gateways</li>
+<li>IPAMs</li>
+<li>Key Pairs</li>
+<li>Launch Templates</li>
+<li>Link Aggregation Groups</li>
+<li>Local Gateways</li>
+<li>Managed Prefix Lists</li>
+<li>NAT Gateways</li>
+<li>Network Access Analyzer</li>
+<li>Network ACLs</li>
+<li>Nitro TPM</li>
+<li>Placement Groups</li>
+<li>Pools</li>
+<li>Reachability Analyzer</li>
+<li>Regions And Zones</li>
+<li>Reserved Instances</li>
+<li>Resource Discoveries</li>
+<li>Resource IDs</li>
+<li>Route Servers</li>
+<li>Route Tables</li>
+<li>Routes</li>
+<li>Scheduled Instances</li>
+<li>Scopes</li>
+<li>Security Groups</li>
+<li>Serial Console</li>
+<li>Service Links</li>
+<li>Snapshots</li>
+<li>Spot Fleet</li>
+<li>Spot Instances</li>
+<li>Subnets</li>
+<li>Tags</li>
+<li>Target Networks</li>
+<li>Traffic Mirroring</li>
+<li>Transit Gateway Connect</li>
+<li>Transit Gateway Multicast</li>
+<li>Transit Gateway Peering Attachments</li>
+<li>Transit Gateway Policy Tables</li>
+<li>Transit Gateway Route Tables</li>
+<li>Transit Gateways</li>
+<li>Verified Access Endpoints</li>
+<li>Verified Access Groups</li>
+<li>Verified Access Instances</li>
+<li>Verified Access Logs</li>
+<li>Verified Access Trust Providers</li>
+<li>Virtual Private Gateway Routes</li>
+<li>Virtual Private Gateways</li>
+<li>VM Export</li>
+<li>VM Import</li>
+<li>Volumes</li>
+<li>VPC Endpoint Services</li>
+<li>VPC Endpoints</li>
+<li>VPC Flow Logs</li>
+<li>VPC Peering</li>
+<li>VPCs</li>
+<li>VPN Concentrators</li>
+<li>VPN Connections</li>
+</ul>
 
 
 
@@ -734,10 +997,10 @@ overflow-x: auto;">
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
