@@ -1,5 +1,5 @@
 site_name: Vera
-repo_url: https://github.com/project-vera
+repo_url: https://github.com/project-vera/vera-aws
 repo_name: project-vera
 nav:
   - Mission: index.md
@@ -7,7 +7,7 @@ nav:
   - Blogs:
     - "[02-06-2026] No More Manual Mocks.": blogs/cloudemu/cloudemu.md
     - "[02-06-2026] Can AI Agents Replace DevOps?": blogs/cloudagent/cloudagent.md
-  - Vera AWS: vera-aws.md
+  - AWS EC2 Emulator: vera-aws.md
 
 theme:
   name: material

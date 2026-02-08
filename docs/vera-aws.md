@@ -1,19 +1,11 @@
-# Vera AWS
+# Vera AWS (Version 0.1)
 
-[GitHub Repository](https://github.com/project-vera/vera-aws/)
-
-Local AWS EC2 emulator. 89 resource types — VPCs, instances, security groups, volumes, and more — running on your machine with no AWS account needed.
+Local AWS EC2 emulator. Currently supports 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end). Runs on your machine with no AWS account needed.
 
 ## Setup
 
 ```bash
-git clone <repo-url> && cd vera-aws
-
-python3 -m venv .venv && source .venv/bin/activate
-pip install -e .
-
 ./install.sh
-export PATH="$(pwd)/.bin:$PATH"
 ```
 
 This creates a venv, installs dependencies, sets up dummy AWS credentials (`~/.aws/credentials`), and generates two wrapper scripts in `.bin/`:
@@ -28,18 +20,17 @@ This creates a venv, installs dependencies, sets up dummy AWS credentials (`~/.a
 
 ## Usage
 
-Start the emulator (activate the venv first if not already):
+Start the emulator on one terminal:
 
 ```bash
-source .venv/bin/activate
-python3 main.py
+uv run main.py
 # Running at http://localhost:5003
 ```
 
-### AWS CLI
+### AWS CLI via `uv run awscli`
 
 ```bash
-awscli ec2 create-vpc --cidr-block 10.0.0.0/16
+uv run awscli ec2 create-vpc --cidr-block 10.0.0.0/16
 # {
 #     "Vpc": {
 #         "VpcId": "vpc-28bc3a23",
@@ -48,6 +39,13 @@ awscli ec2 create-vpc --cidr-block 10.0.0.0/16
 #         ...
 #     }
 # }
+```
+
+### AWS CLI directly via `awscli`
+
+Simply activate the venv and run `awscli`:
+```bash
+source .venv/bin/activate
 
 awscli ec2 describe-vpcs
 awscli ec2 run-instances --image-id ami-12345678 --instance-type t2.micro
@@ -68,9 +66,11 @@ resource "aws_vpc" "main" {
 }
 ```
 
-Then use `terlocal` instead of `terraform`:
+Then use `uv run terlocal` instead of `terraform`. Or simply activate the venv and directly run `terlocal`:
 
 ```bash
+source .venv/bin/activate
+
 terlocal init
 terlocal apply -auto-approve
 terlocal destroy -auto-approve
@@ -82,17 +82,17 @@ See `tests/tf/` for more examples.
 
 ```bash
 # Terminal 1 — start the emulator
-python3 main.py
+uv run main.py
 
 # Terminal 2 — run 260 CLI commands against it
 cd tests
-python3 eval_emulator.py test.sh --endpoint http://localhost:5003 \
+uv run eval_emulator.py test.sh --endpoint http://localhost:5003 \
   --checkpoint eval_results.json --start-from 0
-python3 analyze_results.py eval_results.json
+uv run analyze_results.py eval_results.json
 
 # Terraform smoke test
 cd tests/tf/00-simple-vpc
-terlocal init && terlocal apply -auto-approve
+uv run terlocal init && uv run terlocal apply -auto-approve
 ```
 
 | Emulator | Passing (260 commands) |
@@ -115,3 +115,97 @@ tests/
 ├── eval_emulator.py           Evaluator with checkpointing
 └── tf/                        Terraform test cases
 ```
+
+## Supported Resources
+
+Vera AWS supports the following resources (via EC2 API):
+
+- Account Attributes
+- AFIs
+- AMIs
+- Authorization Rules
+- AWS Marketplace
+- Block Public Access
+- Bundle Tasks
+- BYOASN
+- BYOIP
+- Capacity Reservations
+- Carrier Gateways
+- Certificate Revocation Lists
+- Client Connections
+- Client VPN Endpoints
+- Configuration Files
+- Customer Gateways
+- Customer Owned IP Addresses
+- Declarative Policies (Account Status Report)
+- Dedicated Hosts
+- DHCP Options
+- EC2 Fleet
+- EC2 Instance Connect Endpoints
+- EC2 Topology
+- Elastic Graphics
+- Elastic IP Addresses
+- Elastic Network Interfaces
+- Encryption
+- Event Notifications
+- Event Windows For Scheduled Events
+- Fast Snapshot Restores
+- Infrastructure Performance
+- Instance Types
+- Instances
+- Internet Gateways
+- IPAMs
+- Key Pairs
+- Launch Templates
+- Link Aggregation Groups
+- Local Gateways
+- Managed Prefix Lists
+- NAT Gateways
+- Network Access Analyzer
+- Network ACLs
+- Nitro TPM
+- Placement Groups
+- Pools
+- Reachability Analyzer
+- Regions And Zones
+- Reserved Instances
+- Resource Discoveries
+- Resource IDs
+- Route Servers
+- Route Tables
+- Routes
+- Scheduled Instances
+- Scopes
+- Security Groups
+- Serial Console
+- Service Links
+- Snapshots
+- Spot Fleet
+- Spot Instances
+- Subnets
+- Tags
+- Target Networks
+- Traffic Mirroring
+- Transit Gateway Connect
+- Transit Gateway Multicast
+- Transit Gateway Peering Attachments
+- Transit Gateway Policy Tables
+- Transit Gateway Route Tables
+- Transit Gateways
+- Verified Access Endpoints
+- Verified Access Groups
+- Verified Access Instances
+- Verified Access Logs
+- Verified Access Trust Providers
+- Virtual Private Gateway Routes
+- Virtual Private Gateways
+- VM Export
+- VM Import
+- Volumes
+- VPC Endpoint Services
+- VPC Endpoints
+- VPC Flow Logs
+- VPC Peering
+- VPCs
+- VPN Concentrators
+- VPN Connections
