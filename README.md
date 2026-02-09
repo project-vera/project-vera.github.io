@@ -1,5 +1,7 @@
 # Vera.io
 
+Site: https://project-vera.github.io/
+
 ## To serve the website locally
 
 ```bash
