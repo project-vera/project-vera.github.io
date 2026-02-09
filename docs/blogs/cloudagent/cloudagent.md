@@ -1,5 +1,5 @@
 
-# Can AI Agents Replace DevOps? What We Learned Trying to Replace DevOps with AI Agents
+# The quest for AI Agents as DevOps.
 
 <div style="margin-top: -1.2rem; margin-bottom: 1rem; font-size: 0.85rem; color: #6b7280;">
   February 6, 2026

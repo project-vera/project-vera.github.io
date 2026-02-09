@@ -1,0 +1,107 @@
+.pubs {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: .7rem;
+}
+
+/* One row: year | papers */
+.pub-row {
+  display: grid;
+  /* grid-template-columns: 4.5rem 1fr;*/
+  grid-template-columns: 4.5rem minmax(0, 1fr); /* critical */
+  column-gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.pub-list {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; /* spacing between papers in same year */
+}
+
+/* Year on the left */
+.pub-year {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+/* Paper content */
+.pub-item {
+  /* max-width: 100%; */
+  min-width: 0; /* critical */
+}
+
+/* Paper title */
+.title {
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+/* Meta text */
+.authors,
+.venue {
+  margin-top: 0.2rem;
+}
+
+/* Links */
+.links {
+  margin-top: 0.15rem;
+  /* font-size: 0.9rem; */
+}
+
+.links a {
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* BibTeX */
+details.bibtex {
+  margin-top: 0.2rem;   /* was larger by default */
+}
+
+/* Hide default arrow */
+details.bibtex summary::-webkit-details-marker { display: none; }
+details.bibtex summary { 
+    list-style: none; 
+    cursor: pointer; 
+    font-size: 0.6rem;
+}
+
+/* Make the opened area a "panel" */
+.bibtex-panel {
+  margin-top: 0.1rem;
+  /* padding-left: 0.1rem; */
+  /* border-left: 2px solid #ccc; */
+}
+
+/* Only THIS part scrolls horizontally */
+.bibtex-scroll {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;     /* horizontal scroll */
+  overflow-y: hidden;   /* no vertical scroll */
+}
+
+.bibtex-scroll pre {
+  margin: 0;
+  font-size: 0.6rem;
+  white-space: pre;     /* no wrapping */
+  display: inline-block;/* content defines scroll width */
+  min-width: 100%;      /* keeps it aligned */
+}
+
+/* "New" badge */
+.new {
+  font-size: 0.75rem;
+  border: 1px solid #aaa;
+  padding: 1px 6px;
+  border-radius: 10px;
+  margin-left: 0.4rem;
+}
