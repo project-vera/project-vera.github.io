@@ -3,10 +3,11 @@ repo_url: https://github.com/project-vera/vera-aws
 repo_name: project-vera
 nav:
   - Mission: index.md
+  - Publications: pubs/pubs.md
+  - AWS EC2 Emulator: vera-aws.md
   - Blogs:
     - "[02-06-2026] No More Manual Mocks.": blogs/cloudemu/cloudemu.md
-    - "[02-06-2026] Can AI Agents Replace DevOps?": blogs/cloudagent/cloudagent.md
-  - AWS EC2 Emulator: vera-aws.md
+    - "[02-06-2026] The quest for AI Agents as DevOps.": blogs/cloudagent/cloudagent.md
 
 theme:
   name: material
@@ -30,3 +31,8 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+plugins:
+  - search
+  - include-markdown
+  
