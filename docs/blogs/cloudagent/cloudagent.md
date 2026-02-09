@@ -7,20 +7,20 @@
 
 ---
 
-Cloud infrastructure is the cornerstone of the modern IT industry, yet managing it remains a surprisingly manual and tedious endeavor. From provisioning resources to debugging failures, DevOps teams are constantly battling complexity.
+Cloud infrastructure is the backbone of the modern IT industry, yet managing it remains surprisingly manual and fragile. From provisioning resources to debugging failures and monitoring runtime health, DevOps engineers constantly wrestle with complexity, partial observability, and high-stakes errors.
 
-In our recent paper, **"Cloud Infrastructure Management in the Age of AI Agents,"** my colleagues and I explore a provocative question: *Is it time for AI agents to take the reins?*
+In our recent paper, “Cloud Infrastructure Management in the Age of AI Agents,” we set out to understand whether large language model (LLM)–based agents can meaningfully automate real cloud management tasks — and where they fall short. 
 
-We didn't just want to build a demo; we wanted to understand the fundamental friction between AI models and cloud interfaces. We envision a future where Large Language Models (LLMs) empower autonomous agents to handle these complex workflows. But to get there, we first had to break things.
+We deliberately stress-tested current agents against real cloud interfaces. Our goal was not to show that agents can succeed in idealized settings, but to expose the fundamental friction between LLMs and cloud management modalities. The result: agents are promising, but today’s cloud interfaces were never designed for them.
 
-### The Setup: A Battle of Four Agents
+## The Setup: Four Agents, Four Modalities
 
 To test the current capabilities of AI, we conducted a preliminary study using four different "modalities"—the standard interfaces humans use to manage the cloud. We built four distinct AI agent prototypes to perform tasks on Microsoft Azure:
 
 1.  **SDK Agent:** Uses Python code (imperative programming).
 2.  **CLI Agent:** Uses command-line shell scripts (terminal-based).
 3.  **Infrastructure-as-Code (IaC) Agent:** Uses Terraform (declarative configuration).
-4.  **ClickOps Agent:** Navigates the web portal visually (just like a human clicking buttons).
+4.  **Web Agent:** Navigates the web portal visually (just like a human clicking buttons in the web console).
 
 <p align="center">
   <img src="../pics/four_modals.png-1.png" width="90%">
@@ -28,23 +28,42 @@ To test the current capabilities of AI, we conducted a preliminary study using f
   <em>Figure 1: Four cloud user interaction modalities with simplified code snippets.</em>
 </p>
 
-### Insight 1: Speed vs. Visibility (The "Blindness" of Code)
+## Insight 1: Speed Comes at the Cost of Awareness
 
-We pitted these agents against each other in three rounds of tasks: Provisioning, Updates, and Monitoring. The results revealed a massive trade-off between execution speed and state awareness.
+The CLI agent dominated in efficiency, completing many tasks in a single step (1.6 steps on average). Generating one command was often enough to spin up resources that would require dozens of UI interactions in the web portal. In contrast, the Web agent was painfully slow — sometimes taking over 30× more steps due to page loads, menu navigation, and confirmation dialogs.
 
-The **CLI agent** was the speed demon of the group. For provisioning tasks, it was highly efficient, completing tasks in an average of 1.6 steps. Because it operates via text commands, it could often do in one line what took the **ClickOps agent** 30 times as many steps to achieve. The ClickOps agent was excruciatingly slow because it had to wait for page loads and navigate complex menus, just like a human user would.
+But this speed advantage collapsed during **update tasks**.
 
- However, speed isn't everything. When we moved to **Update tasks** (like changing a VM's disk), the "blindness" of the coding agents became a liability. The CLI and SDK agents struggled because they couldn't easily "see" the current configuration of the cloud. They often failed because they needed to query the state before modifying it, introducing extra steps where errors could creep in.
+Updating existing infrastructure requires understanding the current cloud state. Here, the CLI and SDK agents struggled. They frequently failed because they issued update commands without first querying existing configurations — or misinterpreted partial state returned by APIs. Each additional “state-query” step introduced new failure modes.
 
-In contrast, the ClickOps agent actually performed better here (67% success rate vs. 33% for IaC). Why? Because the web portal *visually presented* the existing configuration. The agent could "see" the current state on the screen, reducing hallucinations and errors during modification.
+The Web agent, surprisingly, performed better on updates (67% success rate versus 33% for IaC). The reason was simple but revealing: the UI shows the state explicitly. Disk attachments, VM settings, and dependencies were visible on screen, reducing hallucinations and incorrect assumptions.
 
-### Insight 2: The "Wrong Tool" Fallacy
+### Observation 1: Blindness to State
+>Coding agents are fast because they tend to skip state inspection — but that same blindness becomes a liability once tasks require modifying existing infrastructure.
 
-One of our most critical findings was that some industry-standard tools are fundamentally ill-suited for AI agents in certain contexts.
+This exposes a core tension: LLMs are good at issuing actions, but cloud updates are fundamentally state-dependent.
 
-Take **Infrastructure-as-Code (IaC)**. It is the gold standard for human DevOps because it is declarative—you describe *what* you want, not *how* to get there. But for an AI agent trying to **Monitor** a system, IaC was a disaster.
 
-When we asked the IaC agent to check the health of a system, it failed significantly (40% success rate). IaC is designed to define infrastructure, not to query real-time telemetry. The agent hallucinated non-existent commands because it was trying to force a square peg into a round hole. Meanwhile, the Web/ClickOps agent excelled at monitoring because it could simply look at the graphs and dashboards already built into the Azure portal.
+## Insight 2: Declarative Tools Aren’t Always the Right Tool
+
+Infrastructure-as-Code (IaC) is widely regarded as best practice for human DevOps teams. It abstracts away execution details and provides strong guarantees for large-scale changes.
+
+But when we evaluated agents on monitoring tasks, IaC performed the worst — with only a 40% success rate.
+
+Why?
+
+IaC tools are designed to define desired state, not to query runtime telemetry. When asked to check system health or retrieve live information, the IaC agent frequently hallucinated unsupported commands or misused Terraform constructs to approximate monitoring functionality.
+
+Meanwhile, the Web agent excelled. Azure’s dashboards already aggregate metrics, logs, and health signals into visual summaries. The agent could simply “look” at graphs that don’t exist in SDK or CLI form — and that IaC cannot express at all.
+
+### Observation 2: Misalignment of Tools and Needs
+>A tool that is ideal for humans in one phase of the cloud infrastructure lifecycle can be fundamentally misaligned with an agent’s needs in another.
+
+This is not an implementation bug — it’s a design mismatch.
+
+## Insight 3: Insight 3: Observability Shapes Agent Reliability
+
+Across all tasks, one factor consistently predicted agent success: how clearly the modality exposed system state and errors.
 
 <p align="center">
   <img src="../pics/radarV3.png-1.png" width="50%">
@@ -52,15 +71,20 @@ When we asked the IaC agent to check the health of a system, it failed significa
   <em>Figure 2: The radar chart summarizing agent performance across different modalities.</em>
 </p>
 
-### The Path Forward: A New Architecture
+- SDK and CLI agents benefited from precise error messages and return codes, which sometimes allowed recovery after failure.
+- Web agents, while slower, benefited from rich observability — visual structure, dashboards, and pre-validated UI flows.
+- IaC agents struggled whenever context windows truncated state, or when runtime information fell outside declarative abstractions.
 
-Our experiments highlight that simply connecting an LLM to a cloud shell isn't enough. We need a more sophisticated architecture that embraces these trade-offs.
+### Observation 3: Agent Reliability is Dependent on Observability
+>Agent failures are often not due to reasoning errors, but due to missing or poorly surfaced state.
 
-We propose a new roadmap for **Agentic Cloud Management** involving three key pillars:
+This suggests that improving agents alone is insufficient — the interfaces themselves must become more agent-aware.
 
-1.  **Multi-Agent Orchestration:** We shouldn't force one agent to do everything. We envision a system that routes tasks to the best "expert." It would dispatch a CLI agent for fast provisioning but switch to a ClickOps agent for visual debugging or monitoring.
-2.  **Sandboxed Exploration ("Cloud Gyms"):** Agents need a safe space to fail. We propose separating workflows into "Exploration" and "Exploitation" phases. Agents should test their strategies in a sandboxed "gym"—a simulated or non-production environment—before touching live infrastructure.
-3.  **Workflow Memory & Guardrails:** Once an agent figures out a complex task in the sandbox, it shouldn't have to relearn it. It should "cache" that workflow into a memory bank for future use. Furthermore, we need strict "human-in-the-loop" guardrails to prevent costly or dangerous mistakes before they happen.
+
+
+## The Path Forward: Rethinking Cloud Management for Agents
+
+Our experiments point to a clear conclusion: simply wiring an LLM to a cloud shell is not enough. Effective agentic cloud management requires architectural changes, not just better prompts.
 
 <p align="center">
   <img src="../pics/future_figv5.png-1.png" width="60%">
@@ -68,9 +92,34 @@ We propose a new roadmap for **Agentic Cloud Management** involving three key pi
   <em>Figure 3: Envisioned agentic system architecture and workflow.</em>
 </p>
 
-### Conclusion
+We outline a roadmap with three key pillars:
 
-Cloud management is ripe for automation, but our research shows that the interface matters just as much as the model. By combining the speed of CLI, the stability of IaC, and the visibility of ClickOps, we can build the next generation of autonomous cloud engineers.
+### 1. Multi-Agent, Modality-Aware Orchestration
+
+No single interface is universally optimal. Fast provisioning favors CLI; large-scale updates favor IaC; debugging and monitoring favor UI-level visibility.
+
+Future systems should route tasks to specialized agents, rather than forcing one agent to master everything.
+
+### 2. Sandboxed Exploration (“Cloud Gyms”)
+
+Cloud actions are slow, costly, and irreversible. Trial-and-error in production is unacceptable.
+
+Agents need safe and low-cost environments to learn and explore strategies, validate workflows, and fail cheaply before touching real infrastructure.
+
+### 3. Workflow Memory and Guardrails
+
+Once an agent figures out how to perform a complex task, it shouldn’t start from scratch next time.
+
+Validated workflows should be cached, reused, and guarded by explicit human-in-the-loop checks — especially for destructive or high-impact operations.
+
+## Closing Thoughts
+
+Cloud infrastructure management is ripe for automation — but our study shows that the interface matters as much as the model.
+
+By combining the speed of CLI, the scalability of IaC, and the observability of ClickOps — and by designing agents that can reason across these modalities — we can move toward a new class of autonomous cloud engineers that are not only capable, but trustworthy.
+
+If you’re building AI agents for real systems, this is the uncomfortable takeaway:
+today’s tools were built for humans, not agents — and agents expose their cracks.
 
 
 *For more details, check out our full paper in the ACM SIGOPS Operating Systems Review.*
