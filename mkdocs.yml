@@ -4,7 +4,7 @@ repo_name: project-vera
 nav:
   - Mission: index.md
   - Publications: pubs/pubs.md
-  - AWS EC2 Emulator: vera-aws.md
+  - Amazon EC2 Emulator: vera-aws.md
   - Blogs:
     - "[02-06-2026] No More Manual Mocks.": blogs/cloudemu/cloudemu.md
     - "[02-06-2026] The quest for AI Agents as DevOps.": blogs/cloudagent/cloudagent.md

@@ -1,6 +1,6 @@
-# Vera AWS (Version 0.1)
+# Vera Amazon EC2 Emulator (Version 0.1)
 
-Local AWS EC2 emulator. Currently supports 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end). Runs on your machine with no AWS account needed.
+Local Amazon EC2 emulator. Currently supports 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end). Runs on your machine with no AWS account needed.
 
 ## Setup
 
