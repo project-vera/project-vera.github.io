@@ -1,6 +1,9 @@
-# Vera Amazon EC2 Emulator (Version 0.1)
+# Vera AWS
 
-Local Amazon EC2 emulator. Currently supports 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end). Runs on your machine with no AWS account needed.
+Local Amazon EC2 emulator
+Version 1 : 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end) — running on your machine with no AWS account needed.
+
+Check out the [Vera website](https://project-vera.github.io/) for more information.
 
 ## Setup
 
@@ -8,14 +11,14 @@ Local Amazon EC2 emulator. Currently supports 89 resource types — VPCs, instan
 ./install.sh
 ```
 
-This creates a venv, installs dependencies, sets up dummy AWS credentials (`~/.aws/credentials`), and generates two wrapper scripts in `.bin/`:
+This creates a venv, installs dependencies, sets up dummy AWS credentials (`~/.aws/credentials`), and generates two wrapper scripts in `.venv/bin/`:
 
 - **`awscli`** — drop-in for `aws`, routes requests to the emulator
 - **`terlocal`** — drop-in for `terraform`, configures the AWS provider endpoint
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.13+
 - AWS CLI and Terraform are installed automatically by `install.sh` if missing (macOS/Linux)
 
 ## Usage
@@ -98,7 +101,7 @@ uv run terlocal init && uv run terlocal apply -auto-approve
 | Emulator | Passing (260 commands) |
 |---|---|
 | LocalStack | 122 (47%) |
-| **Vera AWS** | **187 (72%)** |
+| **Vera AWS v1** | **208 (80%)** |
 
 ## Project Structure
 
@@ -106,9 +109,8 @@ uv run terlocal init && uv run terlocal apply -auto-approve
 main.py                        Flask server (port 5003)
 install.sh                     Sets up awscli/terlocal wrappers
 emulator_core/
-├── state.py                   In-memory resource store
-├── backend.py                 Base backend class
-├── gateway/base.py            Action → backend dispatch
+├── state.py                   In-memory resource store (EC2State singleton)
+├── utils.py                   Shared request parsing and response utilities
 └── services/                  89 resource modules
 tests/
 ├── test.sh                    260 CLI commands (awscli wrapper)
