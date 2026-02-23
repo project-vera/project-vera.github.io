@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../pubs/pubs/">
+        <link rel="prev" href="../vera-aws/">
       
       
-        <link rel="next" href="../vera-gcp/">
+        <link rel="next" href="../blogs/cloudemu/cloudemu/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Amazon EC2 Emulator - Vera</title>
+        <title>Google Compute Engine - Vera</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vera-aws" class="md-skip">
+        <a href="#vera-gcp" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Amazon EC2 Emulator
+              Google Compute Engine
             
           </span>
         </div>
@@ -356,6 +356,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../vera-aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon EC2 Emulator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -375,7 +403,7 @@
   <span class="md-ellipsis">
     
   
-    Amazon EC2 Emulator
+    Google Compute Engine
   
 
     
@@ -393,7 +421,7 @@
   <span class="md-ellipsis">
     
   
-    Amazon EC2 Emulator
+    Google Compute Engine
   
 
     
@@ -459,10 +487,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-cli-via-uv-run-awscli" class="md-nav__link">
+  <a href="#gcloud-cli-via-uv-run-gcpcli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS CLI via uv run awscli
+        gcloud CLI via uv run gcpcli
       
     </span>
   </a>
@@ -470,10 +498,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-cli-directly-via-awscli" class="md-nav__link">
+  <a href="#gcloud-cli-with-venv-activated" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS CLI directly via awscli
+        gcloud CLI with venv activated
       
     </span>
   </a>
@@ -481,10 +509,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
+  <a href="#pointing-gcloud-manually-at-the-emulator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terraform
+        Pointing gcloud manually at the emulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-compute-python-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Cloud Compute Python SDK
       
     </span>
   </a>
@@ -519,6 +558,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#seeded-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seeded Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supported-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -533,34 +583,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../vera-gcp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Google Compute Engine
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -750,10 +772,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-cli-via-uv-run-awscli" class="md-nav__link">
+  <a href="#gcloud-cli-via-uv-run-gcpcli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS CLI via uv run awscli
+        gcloud CLI via uv run gcpcli
       
     </span>
   </a>
@@ -761,10 +783,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-cli-directly-via-awscli" class="md-nav__link">
+  <a href="#gcloud-cli-with-venv-activated" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS CLI directly via awscli
+        gcloud CLI with venv activated
       
     </span>
   </a>
@@ -772,10 +794,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
+  <a href="#pointing-gcloud-manually-at-the-emulator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terraform
+        Pointing gcloud manually at the emulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-compute-python-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Cloud Compute Python SDK
       
     </span>
   </a>
@@ -803,6 +836,17 @@
     <span class="md-ellipsis">
       
         Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seeded-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seeded Resources
       
     </span>
   </a>
@@ -840,200 +884,202 @@
   
 
 
-<h1 id="vera-aws">Vera AWS</h1>
-<p>Local Amazon EC2 emulator
-Version 1 : 89 resource types — VPCs, instances, security groups, volumes, and more (complete list at the end) — running on your machine with no AWS account needed.</p>
+<h1 id="vera-gcp">Vera GCP</h1>
+<p>Local Google Compute Engine — 91 resource types (instances, disks, networks, firewalls, load balancers, and more) running on your machine with no GCP account needed.</p>
+<p>Check out the <a href="https://project-vera.github.io/">Vera website</a> for more information. And the <a href="https://github.com/project-vera/vera-gcp">Vera GCP repository</a> for the code.</p>
 <h2 id="setup">Setup</h2>
 <pre><code class="language-bash">./install.sh
 </code></pre>
-<p>This creates a venv, installs dependencies, sets up dummy AWS credentials (<code>~/.aws/credentials</code>), and generates two wrapper scripts in <code>.venv/bin/</code>:</p>
+<p>This creates a venv, installs dependencies, installs the <code>gcloud</code> CLI if missing (macOS/Linux), and generates a <code>gcpcli</code> wrapper script in <code>.venv/bin/</code>:</p>
 <ul>
-<li><strong><code>awscli</code></strong> — drop-in for <code>aws</code>, routes requests to the emulator</li>
-<li><strong><code>terlocal</code></strong> — drop-in for <code>terraform</code>, configures the AWS provider endpoint</li>
+<li><strong><code>gcpcli</code></strong> — drop-in for <code>gcloud compute</code>, routes all requests to the local emulator with no real GCP credentials required</li>
 </ul>
+<p><code>install.sh</code> creates an isolated gcloud config directory at <code>.venv/vera-gcloud-config/</code> and a static fake access token file so gcloud never prompts for credentials or account login, regardless of whether you have a real Google Cloud account.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>Python 3.13+</li>
-<li>AWS CLI and Terraform are installed automatically by <code>install.sh</code> if missing (macOS/Linux)</li>
+<li><code>gcloud</code> CLI — installed automatically by <code>install.sh</code> if missing (macOS via Homebrew, Linux via apt/yum)</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>Start the emulator on one terminal:</p>
+<p>Start the emulator in one terminal:</p>
 <pre><code class="language-bash">uv run main.py
-# Running at http://localhost:5003
+# GCP Compute Emulator listening on 127.0.0.1:9100
 </code></pre>
-<h3 id="aws-cli-via-uv-run-awscli">AWS CLI via <code>uv run awscli</code></h3>
-<pre><code class="language-bash">uv run awscli ec2 create-vpc --cidr-block 10.0.0.0/16
-# {
-#     &quot;Vpc&quot;: {
-#         &quot;VpcId&quot;: &quot;vpc-28bc3a23&quot;,
-#         &quot;CidrBlock&quot;: &quot;10.0.0.0/16&quot;,
-#         &quot;State&quot;: &quot;available&quot;,
-#         ...
-#     }
-# }
+<p>Then in another terminal, use <code>gcpcli</code> (via <code>uv run</code> or with the venv activated):</p>
+<h3 id="gcloud-cli-via-uv-run-gcpcli">gcloud CLI via <code>uv run gcpcli</code></h3>
+<pre><code class="language-bash">uv run gcpcli instances list
+# Listed 0 items.
+
+uv run gcpcli instances create my-vm \
+  --zone=us-central1-a \
+  --machine-type=n1-standard-1 \
+  --image-family=debian-11 \
+  --image-project=debian-cloud
+# Created [projects/vera-project/zones/us-central1-a/instances/my-vm].
+
+uv run gcpcli instances describe my-vm --zone=us-central1-a
+uv run gcpcli instances stop my-vm --zone=us-central1-a
+uv run gcpcli instances delete my-vm --zone=us-central1-a
 </code></pre>
-<h3 id="aws-cli-directly-via-awscli">AWS CLI directly via <code>awscli</code></h3>
-<p>Simply activate the venv and run <code>awscli</code>:</p>
+<h3 id="gcloud-cli-with-venv-activated">gcloud CLI with venv activated</h3>
 <pre><code class="language-bash">source .venv/bin/activate
 
-awscli ec2 describe-vpcs
-awscli ec2 run-instances --image-id ami-12345678 --instance-type t2.micro
-awscli ec2 describe-instances
+gcpcli instances list
+gcpcli disks list
+gcpcli networks list
+gcpcli firewall-rules list
+gcpcli zones list
+gcpcli machine-types list --zones=us-central1-a
 </code></pre>
-<h3 id="terraform">Terraform</h3>
-<p>Write standard Terraform — no provider overrides needed:</p>
-<pre><code class="language-hcl">provider &quot;aws&quot; {
-  region = &quot;us-east-1&quot;
-}
+<h3 id="pointing-gcloud-manually-at-the-emulator">Pointing gcloud manually at the emulator</h3>
+<p>You can also redirect any <code>gcloud compute</code> command to the emulator without the wrapper, using <code>--access-token-file</code> to bypass credential checks:</p>
+<pre><code class="language-bash">echo &quot;vera-local-token&quot; &gt; /tmp/vera_token.txt
 
-resource &quot;aws_vpc&quot; &quot;main&quot; {
-  cidr_block = &quot;10.0.0.0/16&quot;
-}
+CLOUDSDK_API_ENDPOINT_OVERRIDES_COMPUTE=http://localhost:9100/ \
+CLOUDSDK_CORE_PROJECT=vera-project \
+gcloud compute instances list --access-token-file=/tmp/vera_token.txt
 </code></pre>
-<p>Then use <code>uv run terlocal</code> instead of <code>terraform</code>. Or simply activate the venv and directly run <code>terlocal</code>:</p>
-<pre><code class="language-bash">source .venv/bin/activate
+<h3 id="google-cloud-compute-python-sdk">Google Cloud Compute Python SDK</h3>
+<p>Install the optional SDK dependency:</p>
+<pre><code class="language-bash">uv sync --extra sdk
+# or: uv pip install &quot;google-cloud-compute&gt;=1.0&quot;
+</code></pre>
+<p>Then point it at the emulator:</p>
+<pre><code class="language-python">import os
+os.environ[&quot;CLOUDSDK_API_ENDPOINT_OVERRIDES_COMPUTE&quot;] = &quot;http://localhost:9100/&quot;
+os.environ[&quot;GOOGLE_OAUTH_ACCESS_TOKEN&quot;] = &quot;vera-local-token&quot;
 
-terlocal init
-terlocal apply -auto-approve
-terlocal destroy -auto-approve
+from google.cloud import compute_v1
+
+client = compute_v1.InstancesClient()
+instances = client.list(project=&quot;vera-project&quot;, zone=&quot;us-central1-a&quot;)
+for instance in instances:
+    print(instance.name)
 </code></pre>
-<p>See <code>tests/tf/</code> for more examples.</p>
 <h2 id="running-tests">Running Tests</h2>
 <pre><code class="language-bash"># Terminal 1 — start the emulator
 uv run main.py
 
-# Terminal 2 — run 260 CLI commands against it
-cd tests
-uv run eval_emulator.py test.sh --endpoint http://localhost:5003 \
-  --checkpoint eval_results.json --start-from 0
-uv run analyze_results.py eval_results.json
-
-# Terraform smoke test
-cd tests/tf/00-simple-vpc
-uv run terlocal init &amp;&amp; uv run terlocal apply -auto-approve
+# Terminal 2 — run the full gcloud compute test suite
+source .venv/bin/activate
+bash tests/test.sh
 </code></pre>
+<p><code>tests/test.sh</code> covers the full lifecycle of 18 resource types: zones, regions, machine types, networks, subnets, firewall rules, instances (create/stop/start/delete), disks, snapshots, addresses, health checks, backend services, URL maps, target HTTP proxies, forwarding rules, instance templates, and operations.</p>
+<h2 id="project-structure">Project Structure</h2>
+<pre><code>main.py                        Flask server (port 9100) — GCP Compute REST gateway
+install.sh                     Sets up gcpcli wrapper and isolated gcloud config
+emulator_core/
+├── state.py                   In-memory resource store (GCPState singleton)
+├── utils.py                   Shared helpers: operations, pagination, filtering
+├── routes.json                Route registry (91 resources, 816 routes)
+└── services/                  91 resource backend modules
+tests/
+├── test.sh                    gcloud compute command test suite (76 commands)
+├── cli/gcp_commands.json      Command catalogue with expected outputs
+└── tf/                        Terraform example configs (google provider)
+</code></pre>
+<h2 id="seeded-resources">Seeded Resources</h2>
+<p>The emulator pre-populates the following on startup:</p>
 <table>
 <thead>
 <tr>
-<th>Emulator</th>
-<th>Passing (260 commands)</th>
+<th>Resource</th>
+<th>Name</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>LocalStack</td>
-<td>122 (47%)</td>
+<td>Network</td>
+<td><code>default</code> (auto-mode)</td>
 </tr>
 <tr>
-<td><strong>Vera AWS v1</strong></td>
-<td><strong>208 (80%)</strong></td>
+<td>Zone</td>
+<td><code>us-central1-a</code></td>
+</tr>
+<tr>
+<td>Region</td>
+<td><code>us-central1</code></td>
+</tr>
+<tr>
+<td>Machine types</td>
+<td><code>n1-standard-1/2/4</code>, <code>e2-micro/small/medium</code>, <code>e2-standard-2/4</code>, <code>n2-standard-2/4</code></td>
+</tr>
+<tr>
+<td>Image families</td>
+<td><code>debian-11/12/10</code>, <code>ubuntu-2204-lts/2004-lts</code>, <code>centos-7</code>, <code>rocky-linux-9</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="project-structure">Project Structure</h2>
-<pre><code>main.py                        Flask server (port 5003)
-install.sh                     Sets up awscli/terlocal wrappers
-emulator_core/
-├── state.py                   In-memory resource store (EC2State singleton)
-├── utils.py                   Shared request parsing and response utilities
-└── services/                  89 resource modules
-tests/
-├── test.sh                    260 CLI commands (awscli wrapper)
-├── eval_emulator.py           Evaluator with checkpointing
-└── tf/                        Terraform test cases
-</code></pre>
 <h2 id="supported-resources">Supported Resources</h2>
-<p>Vera AWS supports the following resources (via EC2 API):</p>
+<p>Vera GCP supports the following GCP Compute resources:</p>
 <ul>
-<li>Account Attributes</li>
-<li>AFIs</li>
-<li>AMIs</li>
-<li>Authorization Rules</li>
-<li>AWS Marketplace</li>
-<li>Block Public Access</li>
-<li>Bundle Tasks</li>
-<li>BYOASN</li>
-<li>BYOIP</li>
-<li>Capacity Reservations</li>
-<li>Carrier Gateways</li>
-<li>Certificate Revocation Lists</li>
-<li>Client Connections</li>
-<li>Client VPN Endpoints</li>
-<li>Configuration Files</li>
-<li>Customer Gateways</li>
-<li>Customer Owned IP Addresses</li>
-<li>Declarative Policies (Account Status Report)</li>
-<li>Dedicated Hosts</li>
-<li>DHCP Options</li>
-<li>EC2 Fleet</li>
-<li>EC2 Instance Connect Endpoints</li>
-<li>EC2 Topology</li>
-<li>Elastic Graphics</li>
-<li>Elastic IP Addresses</li>
-<li>Elastic Network Interfaces</li>
-<li>Encryption</li>
-<li>Event Notifications</li>
-<li>Event Windows For Scheduled Events</li>
-<li>Fast Snapshot Restores</li>
-<li>Infrastructure Performance</li>
-<li>Instance Types</li>
+<li>Addresses (regional and global)</li>
+<li>Autoscalers</li>
+<li>Backend Buckets</li>
+<li>Backend Services (regional and global)</li>
+<li>Disks</li>
+<li>External VPN Gateways</li>
+<li>Firewall Policies</li>
+<li>Firewalls</li>
+<li>Forwarding Rules (regional and global)</li>
+<li>Future Reservations</li>
+<li>Global Network Endpoint Groups</li>
+<li>Global Public Delegated Prefixes</li>
+<li>Health Checks (HTTP, HTTPS, TCP)</li>
+<li>Images and Image Family Views</li>
+<li>Instance Group Manager Resize Requests</li>
+<li>Instance Group Managers</li>
+<li>Instance Groups</li>
+<li>Instance Settings</li>
+<li>Instance Templates</li>
 <li>Instances</li>
-<li>Internet Gateways</li>
-<li>IPAMs</li>
-<li>Key Pairs</li>
-<li>Launch Templates</li>
-<li>Link Aggregation Groups</li>
-<li>Local Gateways</li>
-<li>Managed Prefix Lists</li>
-<li>NAT Gateways</li>
-<li>Network Access Analyzer</li>
-<li>Network ACLs</li>
-<li>Nitro TPM</li>
-<li>Placement Groups</li>
-<li>Pools</li>
-<li>Reachability Analyzer</li>
-<li>Regions And Zones</li>
-<li>Reserved Instances</li>
-<li>Resource Discoveries</li>
-<li>Resource IDs</li>
-<li>Route Servers</li>
-<li>Route Tables</li>
+<li>Instant Snapshots</li>
+<li>Interconnect Attachment Groups</li>
+<li>Interconnect Attachments</li>
+<li>Interconnect Groups</li>
+<li>Interconnects</li>
+<li>License Codes</li>
+<li>Licenses</li>
+<li>Machine Images</li>
+<li>Machine Types</li>
+<li>NAT Mappings</li>
+<li>Network Attachments</li>
+<li>Network Edge Security Services</li>
+<li>Network Endpoint Groups</li>
+<li>Network Firewall Policies</li>
+<li>Networks</li>
+<li>Node Groups</li>
+<li>Node Templates</li>
+<li>Node Types</li>
+<li>Organization Security Policies</li>
+<li>Packet Mirrorings</li>
+<li>Projects</li>
+<li>Public Advertised Prefixes</li>
+<li>Public Delegated Prefixes</li>
+<li>Regions</li>
+<li>Reservations</li>
+<li>Resource Policies</li>
+<li>Routers</li>
 <li>Routes</li>
-<li>Scheduled Instances</li>
-<li>Scopes</li>
-<li>Security Groups</li>
-<li>Serial Console</li>
-<li>Service Links</li>
+<li>Security Policies</li>
+<li>Service Attachments</li>
 <li>Snapshots</li>
-<li>Spot Fleet</li>
-<li>Spot Instances</li>
-<li>Subnets</li>
-<li>Tags</li>
-<li>Target Networks</li>
-<li>Traffic Mirroring</li>
-<li>Transit Gateway Connect</li>
-<li>Transit Gateway Multicast</li>
-<li>Transit Gateway Peering Attachments</li>
-<li>Transit Gateway Policy Tables</li>
-<li>Transit Gateway Route Tables</li>
-<li>Transit Gateways</li>
-<li>Verified Access Endpoints</li>
-<li>Verified Access Groups</li>
-<li>Verified Access Instances</li>
-<li>Verified Access Logs</li>
-<li>Verified Access Trust Providers</li>
-<li>Virtual Private Gateway Routes</li>
-<li>Virtual Private Gateways</li>
-<li>VM Export</li>
-<li>VM Import</li>
-<li>Volumes</li>
-<li>VPC Endpoint Services</li>
-<li>VPC Endpoints</li>
-<li>VPC Flow Logs</li>
-<li>VPC Peering</li>
-<li>VPCs</li>
-<li>VPN Concentrators</li>
-<li>VPN Connections</li>
+<li>SSL Certificates</li>
+<li>SSL Policies</li>
+<li>Subnetworks</li>
+<li>Target gRPC Proxies</li>
+<li>Target HTTP Proxies</li>
+<li>Target HTTPS Proxies</li>
+<li>Target Instances</li>
+<li>Target Pools</li>
+<li>Target SSL Proxies</li>
+<li>Target TCP Proxies</li>
+<li>Target VPN Gateways</li>
+<li>URL Maps</li>
+<li>VPN Gateways</li>
+<li>VPN Tunnels</li>
+<li>Zone Operations</li>
+<li>Zones</li>
 </ul>
 
 
