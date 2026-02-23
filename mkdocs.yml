@@ -1,6 +1,6 @@
 site_name: Vera
-repo_url: https://github.com/project-vera/vera-aws
-repo_name: project-vera
+repo_url: https://github.com/project-vera/vera
+repo_name: vera
 nav:
   - Mission: index.md
   - Publications: pubs/pubs.md
