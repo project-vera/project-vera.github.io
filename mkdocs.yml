@@ -1,4 +1,4 @@
-site_name: Vera
+site_name: Project Vera
 repo_url: https://github.com/project-vera/vera
 repo_name: vera
 nav:
@@ -13,6 +13,8 @@ nav:
 
 theme:
   name: material
+  logo: assets/images/fav.svg
+  favicon: assets/images/fav.svg
   palette:
     # Palette toggle for light mode
     - scheme: default
