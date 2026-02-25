@@ -14,7 +14,7 @@ nav:
 theme:
   name: material
   logo: assets/images/icon3-3.svg
-  favicon: assets/images/icon3-3.svg
+  favicon: assets/images/icon3-3.png
   palette:
     # Palette toggle for light mode
     - scheme: default
